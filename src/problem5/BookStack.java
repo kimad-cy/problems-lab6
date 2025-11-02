@@ -10,15 +10,24 @@ public class BookStack {
     }
 
     public void push(Book book) {
-
+        if (stack == null) {
+            stack = new LinkedList<>();
+        }
+        stack.add(book);
     }
 
     public Book pop() {
-        // code here and don't to test if it's empty
+        if (isEmpty()) {
+            return null;
+        }
+        return stack.removeLast();
     }
 
     public Book peek() {
-        // code here and don't to test if it's empty
+        if (isEmpty()) {
+            return null;
+        }
+        return stack.getLast();
     }
 
     public boolean isEmpty() {
@@ -27,6 +36,9 @@ public class BookStack {
 
     public void display() {
         System.out.println("Stack contents (top to bottom):");
+        for(int index = stack.size()-1; index >= 0; index--) {
+            System.out.println(stack.get(index));
+        }
 
     }
 }
